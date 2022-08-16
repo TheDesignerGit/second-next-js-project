@@ -25,7 +25,7 @@ function NewMeetupForm(props) {
       description: enteredDescription
     };
 
-    console.log('form submit handler out', JSON.stringify(meetupData))
+    // console.log('form submit handler out', JSON.stringify(meetupData))
     props.onAddMeetup(meetupData);
   }
 
@@ -47,10 +47,11 @@ function NewMeetupForm(props) {
         <div className={classes.control}>
           <label htmlFor='description'>Description</label>
           <textarea
-            id='description'
+            id='description' 
             required
-            rows='5'
+            rows='2'
             ref={descriptionInputRef}
+            placeholder='Enter description here'
           ></textarea>
         </div>
         <div className={classes.actions}>
