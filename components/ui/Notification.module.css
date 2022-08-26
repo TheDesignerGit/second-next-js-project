@@ -34,3 +34,17 @@
 .error {
     background-color: #e65035;
 }
+
+.mainText {
+    animation-name: blink;
+    animation-duration: 1500ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    opacity: 1;
+}
+
+@keyframes blink {
+    0% {opacity: 1}
+    50% {opacity: 0}
+    99% {opacity: 1}
+}
