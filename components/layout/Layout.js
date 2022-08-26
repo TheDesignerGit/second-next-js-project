@@ -1,28 +1,28 @@
-import { useContext } from 'react'
+import { useContext } from "react"
 
-import MainNavigation from './MainNavigation';
-import Notification from '../ui/Notification';
-import NotificationContext from '../../store/notification-context';
+import MainNavigation from "./MainNavigation"
+import Notification from "../ui/Notification"
+import NotificationContext from "../../store/notification-context"
 
-import classes from './Layout.module.css';
+import classes from "./Layout.module.css"
 
-function Layout(props) {
-  const notificationCtx = useContext(NotificationContext)
+const Layout = props => {
+    const notificationCtx = useContext(NotificationContext)
+    const activeNotif = notificationCtx.notification
 
-  const activeNotif = notificationCtx.notification
-  
-  return (
-    <div>
-      <MainNavigation />
-      <main className={classes.main}>{props.children}</main>
-      {activeNotif && (
-        <Notification 
-          title={activeNotif.title} 
-          message={activeNotif.message} 
-          status={activeNotif.status} />
-      )}
-    </div>
-  );
+    return (
+        <div>
+            <MainNavigation />
+            <main className={classes.main}>{props.children}</main>
+            {activeNotif && (
+                <Notification
+                    title={activeNotif.title}
+                    message={activeNotif.message}
+                    status={activeNotif.status}
+                />
+            )}
+        </div>
+    )
 }
 
-export default Layout;
+export default Layout

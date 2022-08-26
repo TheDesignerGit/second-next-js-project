@@ -1,24 +1,26 @@
-import Link from 'next/link'
+import Link from "next/link"
+// add to Anki
 
-import classes from './MainNavigation.module.css';
+import classes from "./MainNavigation.module.css"
 
-function MainNavigation() {
-
-  return (
-    <header className={classes.header}>
-      <div className={classes.logo}>React Meetups</div>
-      <nav>
-        <ul>
-          <li>
-            <Link href='/'>All Meetups</Link>
-          </li>
-          <li>
-            <Link href='/new-meetup'>Add New Meetup</Link>
-          </li>
-        </ul>
-      </nav>
-    </header>
-  );
+const MainNavigation = () => {
+    return (
+        <header className={classes.header}>
+            <div className={classes.logo}>
+                <Link href="/">React Meetups</Link>
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <Link href="/">All Meetups</Link>
+                    </li>
+                    <li>
+                        <Link href="/new-meetup">Add New Meetup</Link>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    )
 }
 
-export default MainNavigation;
+export default MainNavigation

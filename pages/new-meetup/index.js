@@ -17,7 +17,7 @@ const NewMeetupPage = () => {
             title: 'Signing Up...',
             message: 'Add new meetup',
             status: 'pending',
-        }) 
+        })
 
         // .:. send post request
         fetch('/api/new-meetup-api', {
@@ -29,7 +29,7 @@ const NewMeetupPage = () => {
                 if (response.ok) {
                     return response.json()
                 }
-
+                // .:. throw error
                 return response.json().then( (data) => {
                     throw new Error(data.message || 'Something went wrong')
                 })

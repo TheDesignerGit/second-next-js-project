@@ -9,15 +9,16 @@ function Notification(props) {
     const { title, message, status } = props;
 
     let statusClasses = '';
+        // 3*s - add to Anki. pattern
 
     if (status === 'success') {
         statusClasses = classes.success;
-        setTimeout( () => {notificationCtx.hideNotification()}, 5000)
+        // setTimeout( () => {notificationCtx.hideNotification()}, 5000)
     }
 
     if (status === 'error') {
         statusClasses = classes.error;
-        setTimeout( () => {notificationCtx.hideNotification()}, 5000)
+        // setTimeout( () => {notificationCtx.hideNotification()}, 5000)
     }
 
     if (status === 'pending') {
@@ -28,7 +29,7 @@ function Notification(props) {
 
     return (
         <div className={activeClasses} onClick={notificationCtx.hideNotification}>
-            <h2>{title}</h2>
+            <h2 className='mainText'>{title}</h2>
             <p>{message}</p>
         </div>
     );

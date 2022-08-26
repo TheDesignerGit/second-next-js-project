@@ -1,19 +1,34 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from "react"
 
-// :.. 1. create context w/ initial value
+// .:. 1. create context w/ initial value
 const NotificationContext = createContext({
     notification: null,
-    showNotification: (notificationData)=> {},
-    hideNotification: ()=> {},
+    showNotification: notificationData => {},
+    hideNotification: () => {},
 })
 
-// :.. 3. context provider component
-export function NotificationContextProvider (props) {
-
-    // :.. 4. manage context-related state
+// .:. 3. context provider component
+export const NotificationContextProvider = props => {
+    // .:. 4. manage context-related state
     const [activeNotification, setActiveNotification] = useState()
 
-    function showNotificationHandler (notificationData) {
+    useEffect(() => {
+        let timerID = null
+    
+        if (
+            activeNotification &&
+            (activeNotification.status === "success" ||
+                activeNotification.status === "error")
+        ) {
+            timerID = setTimeout(() => setActiveNotification(null), 5000)
+        }
+
+        return () => {
+            clearTimeout(timerID)
+        }
+    }, [activeNotification])
+
+    function showNotificationHandler(notificationData) {
         setActiveNotification({
             title: notificationData.title,
             message: notificationData.message,
@@ -21,22 +36,24 @@ export function NotificationContextProvider (props) {
         })
     }
 
-    function hideNotificationHandler () {setActiveNotification(null)}
+    function hideNotificationHandler() {
+        setActiveNotification(null)
+    }
 
-    // :.. 5. data and functions into single bundle
+    // .:. 5. data and functions into single bundle
     const ctx = {
         notification: activeNotification,
         showNotification: showNotificationHandler,
         hideNotification: hideNotificationHandler,
     }
 
-    // :.. 6. return provider & set context bundle as current value
+    // .:. 6. return provider & set context bundle as current value
     return (
-    <NotificationContext.Provider value={ctx}>
-        {props.children}
-    </NotificationContext.Provider>
+        <NotificationContext.Provider value={ctx}>
+            {props.children}
+        </NotificationContext.Provider>
     )
 }
 
-// :.. 2. export context as default
+// .:. 2. export context as default
 export default NotificationContext
