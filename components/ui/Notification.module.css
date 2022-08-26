@@ -14,7 +14,6 @@
     align-items: center;
     color: white;
     padding: 0.5rem 10%;
-        /* add to Anki, percent unit */
     box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.2);
 }
 
@@ -35,17 +34,3 @@
 .error {
     background-color: #e65035;
 }
-/* 
-.mainText {
-    animation-name: blink;
-    animation-duration: 500ms;
-    animation-iteration-count: infinite;
-    opacity: 0;
-    color: red;
-}
-
-@keyframes blink {
-    0% {opacity: 0}
-    50% {opacity: 1}
-    99% {opacity: 0}
-} */

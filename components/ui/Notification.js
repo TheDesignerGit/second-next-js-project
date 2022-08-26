@@ -29,7 +29,7 @@ function Notification(props) {
 
     return (
         <div className={activeClasses} onClick={notificationCtx.hideNotification}>
-            <h2 className='mainText'>{title}</h2>
+            <h2>{title}</h2>
             <p>{message}</p>
         </div>
     );
